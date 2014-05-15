@@ -10,3 +10,4 @@ ansible-playbook -i inventory mysql.yml
 db_name ==> Database name. <br /> 
 db_user ==> Database user<br />
 db_password ==> Database password. <br />
+db_host ==> User host variable, by default localhost. <br />
