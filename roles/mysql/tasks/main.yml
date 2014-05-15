@@ -1,0 +1,20 @@
+---
+- name: Add MySQL python
+  apt: name=python-mysqldb state=present update_cache=yes
+  when: ansible_os_family == "Debian"
+  ignore_errors: True
+
+name: Add MySQL python
+  yum: name=MySQL-python state=present
+  when: ansible_os_family == "RedHat"
+  ignore_errors: True
+  
+- name: Create database {{ db_name }}
+  mysql_db: name={{ db_name }}
+  ignore_errors: True
+
+- name: Create user {{ db_user }}
+  mysql_user: name={{ db_user }} password={{ db_password }} priv={{ db_name }}.*:ALL host={{ db_host}} state=present
+
+  
+
